@@ -12,10 +12,12 @@
 
 ## Stack
 * **Docker**
+* **Github Actions**
 * **Vue.js**
 * **Node.js**
 * **MongoDB**
 * **Bootstrap**
+
 
 ### Requirements for local installation
 
