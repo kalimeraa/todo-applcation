@@ -1,0 +1,6 @@
+{
+  "pluginsFile": "tests/e2e/plugins/index.js",
+  "responseTimeout": 20000,
+  "requestTimeout": 20000,
+  "experimentalFetchPolyfill": true
+}

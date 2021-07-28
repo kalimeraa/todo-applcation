@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: todo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+  frontend:
+    container_name: todo-app-frontend
+    restart: always
+    build: ./frontend
+    volumes:
+      - ./frontend:/frontend/
+      - node_modules_for_frontend:/frontend/node_modules
+    environment:
+      - API_ENDPOINT=backend
+    depends_on:
+      - backend
+      - mongo
+    ports:
+      - '80:80'
+  backend:
+    container_name: todo-app-backend
+    restart: always
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_DB=todo
+    build: ./backend
+    volumes:
+    - ./backend:/backend/
+    - node_modules_for_backend:/backend/node_modules
+    ports:
+      - '5000:5000'
+
+volumes:
+  mongodb:
+  node_modules_for_backend:
+  node_modules_for_frontend:
