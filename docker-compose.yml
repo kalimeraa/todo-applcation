@@ -8,15 +8,11 @@ services:
       MONGO_INITDB_DATABASE: todo
     ports:
       - 27017:27017
-    volumes:
-      - mongodb:/data/db
   frontend:
     container_name: todo-app-frontend
+    image: majordocker/frontend
     restart: always
     build: ./frontend
-    volumes:
-      - ./frontend:/frontend/
-      - node_modules_for_frontend:/frontend/node_modules
     environment:
       - API_ENDPOINT=backend
     depends_on:
@@ -26,15 +22,13 @@ services:
       - '80:80'
   backend:
     container_name: todo-app-backend
+    image: majordocker/backend
     restart: always
     depends_on:
       - mongo
     environment:
       - MONGO_DB=todo
     build: ./backend
-    volumes:
-    - ./backend:/backend/
-    - node_modules_for_backend:/backend/node_modules
     ports:
       - '5000:5000'
 
