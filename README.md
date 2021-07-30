@@ -11,6 +11,7 @@
 - Vue | Vuex | Cypress for e2e test | Jest for unit test
 
 ## Stack
+* **AWS**
 * **Docker**
 * **Github Actions**
 * **Vue.js**
@@ -28,3 +29,7 @@
 ```
   docker-compose up -d
 ```
+
+# LINKS
+- Frontend: http://todo-loadb-1w01e0swy60px-4b9b4a84bc9e0991.elb.us-east-1.amazonaws.com
+- Backend: http://todo-loadb-1w01e0swy60px-4b9b4a84bc9e0991.elb.us-east-1.amazonaws.com:5000
