@@ -8,19 +8,17 @@ RUN apt-get autoremove --purge -y libpq-dev apt-get clean; rm -rf /var/lib/apt/l
 
 WORKDIR /frontend
 
-ARG VUE_APP_API_ENDPOINT
-ENV VUE_APP_API_ENDPOINT=$VUE_APP_API_ENDPOINT
-
 COPY package*.json ./
 
 RUN npm install
 
 COPY . .
 
-ENV NODE_ENV=production
+#ENV NODE_ENV=production
 
-RUN npm run build
+#RUN npm run build
 
 EXPOSE 80
 
-CMD [ "http-server","-p","80", "dist" ]
+#CMD [ "http-server","-p","80", "dist" ]
+CMD ["npm","run","serve"]

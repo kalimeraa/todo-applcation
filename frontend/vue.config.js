@@ -7,7 +7,7 @@ module.exports = {
     },
     proxy: {
       "/api": {
-        target: `http://${process.env.API_ENDPOINT}:5000`
+        target: `http://${process.env.VUE_APP_API_ENDPOINT}:5000`
       }
     }
   }
