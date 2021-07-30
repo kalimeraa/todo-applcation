@@ -12,14 +12,19 @@ services:
     container_name: todo-app-frontend
     image: majordocker/frontend
     restart: always
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        - VUE_APP_API_ENDPOINT=backend
     environment:
-      - API_ENDPOINT=backend
+      - VUE_APP_API_ENDPOINT=backend
     depends_on:
       - backend
       - mongo
     ports:
       - '80:80'
+    links:
+      - backend
   backend:
     container_name: todo-app-backend
     image: majordocker/backend

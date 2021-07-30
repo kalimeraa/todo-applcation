@@ -24,12 +24,13 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchTodos({ commit }) {
-      const res = await axios.get("/api/todos");
+      //const res = await axios.get("/api/todos");
+      const res = await axios.get(`http://0.0.0.0:5000/api/todos`);
       commit("SET_TODOS", res.data);
     },
     async addTodo({ commit }, todo) {
       try {
-        const createdTodo = await axios.post("/api/todos/create", { todo });
+        const createdTodo = await axios.post(`http://0.0.0.0:5000/api/todos/create`, { todo });
         commit("ADD_TODO", createdTodo.data);
       } catch (e) {
         console.log(e.toString());
